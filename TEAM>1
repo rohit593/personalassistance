@@ -1,0 +1,34 @@
+CODE:def listen(x):
+    r=rs.Recognizer()
+    if x == 0:
+        system('say Hi. How can I help?')
+    with rs.Microphone() as source:
+        audio=r.listen(source)
+    try:
+        text = r.recognize_google(audio)
+        y = process(text.lower())
+        return(y)
+    except:
+        if x == 1:
+            system('say Good Bye!')
+        else:
+            system('say I did not get that. Please say again.')
+            listen(1)
+            
+            
+            
+            :Organization ID
+ivacko
+Device Type
+NodeMCU
+Device ID
+mcu123
+Authentication Method
+use-token-auth
+Authentication Token
+smarthome123
+
+
+
+
+
