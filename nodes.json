@@ -1,0 +1,546 @@
+[
+    {
+        "id": "68088a3e.3d3044",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "e8ec4ae.661a8b8",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "web",
+        "broker": "io.adafruit.com",
+        "port": "1883",
+        "tls": "",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "57f7b6f0.7f9648",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "local",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "870cd0fe.73dce",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "Lucida Sans Unicode,Lucida Grande,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "Lucida Sans Unicode,Lucida Grande,sans-serif"
+                }
+            }
+        },
+        "site": {
+            "name": "Smart Pill Box",
+            "hideToolbar": "false",
+            "allowSwipe": "true",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 375,
+                "sy": 100,
+                "gx": 6,
+                "gy": 6,
+                "cx": 2,
+                "cy": 2,
+                "px": 1,
+                "py": 1
+            }
+        }
+    },
+    {
+        "id": "6408e139.2836b",
+        "type": "ui_group",
+        "z": "",
+        "name": "Home",
+        "tab": "e603b9fb.51f728",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "e603b9fb.51f728",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 1
+    },
+    {
+        "id": "d21495a0.3e9828",
+        "type": "ui_group",
+        "z": "",
+        "name": "Group 1",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "652078c9.37d018",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "321228f7.344b78",
+        "type": "ui_group",
+        "name": "Group 2",
+        "tab": "",
+        "order": 2,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "32001fa5.5eb03",
+        "type": "function",
+        "z": "68088a3e.3d3044",
+        "name": "getDayOfWeek",
+        "func": "var date = new Date();\nmsg.payload = date.getDay();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 538,
+        "y": 379,
+        "wires": [
+            [
+                "193d8c2c.c2f944"
+            ]
+        ]
+    },
+    {
+        "id": "63445a2.a89f6a4",
+        "type": "mqtt out",
+        "z": "68088a3e.3d3044",
+        "name": "TURNONLED",
+        "topic": "IFTT_USER/feeds/smartmed.led",
+        "qos": "0",
+        "retain": "",
+        "broker": "e8ec4ae.661a8b8",
+        "x": 446,
+        "y": 622,
+        "wires": []
+    },
+    {
+        "id": "8cadd440.faffe8",
+        "type": "file in",
+        "z": "68088a3e.3d3044",
+        "name": "Read TimesFiles",
+        "filename": "PATH_TO_FILE",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "x": 241,
+        "y": 426,
+        "wires": [
+            [
+                "4070f70.383b608"
+            ]
+        ]
+    },
+    {
+        "id": "967bd7c0.9a9008",
+        "type": "mqtt in",
+        "z": "68088a3e.3d3044",
+        "name": "MQQT-Temperature",
+        "topic": "IFTT_USER/feeds/smartmed.temperature",
+        "qos": "0",
+        "broker": "e8ec4ae.661a8b8",
+        "x": 1056,
+        "y": 273,
+        "wires": [
+            [
+                "58315669.ba8298"
+            ]
+        ]
+    },
+    {
+        "id": "b4754fcf.7cc7f",
+        "type": "http request",
+        "z": "68088a3e.3d3044",
+        "name": "SendHotSMS",
+        "method": "GET",
+        "ret": "txt",
+        "url": "https://maker.ifttt.com/trigger/TEMP_EVENT/with/key/IFFT_KEY",
+        "tls": "",
+        "x": 1200,
+        "y": 346,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "58315669.ba8298",
+        "type": "delay",
+        "z": "68088a3e.3d3044",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "3",
+        "rateUnits": "hour",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1117,
+        "y": 307,
+        "wires": [
+            [
+                "b4754fcf.7cc7f"
+            ]
+        ]
+    },
+    {
+        "id": "193d8c2c.c2f944",
+        "type": "switch",
+        "z": "68088a3e.3d3044",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "7",
+                "vt": "jsonata"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 1,
+        "x": 562,
+        "y": 421,
+        "wires": [
+            [
+                "ea771cf6.356e8"
+            ]
+        ]
+    },
+    {
+        "id": "ea771cf6.356e8",
+        "type": "http request",
+        "z": "68088a3e.3d3044",
+        "name": "SendFillPillsSMS",
+        "method": "GET",
+        "ret": "txt",
+        "url": "https://maker.ifttt.com/trigger/TEMP_EVENT/with/key/IFFT_KEY",
+        "tls": "",
+        "x": 617,
+        "y": 454,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "55061ceb.f99484",
+        "type": "mqtt in",
+        "z": "68088a3e.3d3044",
+        "name": "MQQT-Humidity",
+        "topic": "IFTT_USER/feeds/smartmed.humidity",
+        "qos": "0",
+        "broker": "e8ec4ae.661a8b8",
+        "x": 730,
+        "y": 294,
+        "wires": [
+            [
+                "4c87e236.0d2f4c"
+            ]
+        ]
+    },
+    {
+        "id": "83f40232.7d6a1",
+        "type": "http request",
+        "z": "68088a3e.3d3044",
+        "name": "SendHumiditySMS",
+        "method": "GET",
+        "ret": "txt",
+        "url": "",
+        "tls": "",
+        "x": 954,
+        "y": 414,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4c87e236.0d2f4c",
+        "type": "delay",
+        "z": "68088a3e.3d3044",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "3",
+        "rateUnits": "hour",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 802,
+        "y": 334,
+        "wires": [
+            [
+                "b032b4fb.430bd8"
+            ]
+        ]
+    },
+    {
+        "id": "b032b4fb.430bd8",
+        "type": "function",
+        "z": "68088a3e.3d3044",
+        "name": "AddVarToURL",
+        "func": "let humidity_level = msg.payload\nmsg.payload = {};\nmsg.url = \"https://maker.ifttt.com/trigger/HUMIDITY_EVENT/with/key/IFFT_KEY?value1=\";\nmsg.url += humidity_level + \"%\";\nmsg.method = \"GET\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 881,
+        "y": 372,
+        "wires": [
+            [
+                "83f40232.7d6a1"
+            ]
+        ]
+    },
+    {
+        "id": "ec9ec93b.1f71d8",
+        "type": "inject",
+        "z": "68088a3e.3d3044",
+        "name": "Check Every 10 Minutes",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 225,
+        "y": 389,
+        "wires": [
+            [
+                "8cadd440.faffe8"
+            ]
+        ]
+    },
+    {
+        "id": "4070f70.383b608",
+        "type": "json",
+        "z": "68088a3e.3d3044",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 269,
+        "y": 456,
+        "wires": [
+            [
+                "40bc379a.1cf7c8"
+            ]
+        ]
+    },
+    {
+        "id": "40bc379a.1cf7c8",
+        "type": "function",
+        "z": "68088a3e.3d3044",
+        "name": "getTimeForToday",
+        "func": "var date = new Date();\nvar today = date.getDay();\nvar todayTimes = msg.payload[today];\nvar shouldTurnOnLed = false;\ntodayTimes.forEach(time =>{\n    var pillTime = new Date('1970-01-01T' + time);\n    var nowMinutes = (date.getHours() * 60) + date.getMinutes();\n    var pillMinutes =  (pillTime.getHours() * 60) + pillTime.getMinutes();\n    \n    if(nowMinutes - pillMinutes <= 10){\n        shouldTurnOnLed = true;\n    }\n});\n\nmsg.payload = {};\nmsg.payload['turnOnLed'] = shouldTurnOnLed;\nmsg.payload['day'] = today;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 305,
+        "y": 489,
+        "wires": [
+            [
+                "5f1e8832.187b58"
+            ]
+        ]
+    },
+    {
+        "id": "5f1e8832.187b58",
+        "type": "delay",
+        "z": "68088a3e.3d3044",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "10",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 339,
+        "y": 517,
+        "wires": [
+            [
+                "8e2a9758.8c6b28"
+            ]
+        ]
+    },
+    {
+        "id": "8e2a9758.8c6b28",
+        "type": "switch",
+        "z": "68088a3e.3d3044",
+        "name": "",
+        "property": "payload.turnOnLed",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 362,
+        "y": 552,
+        "wires": [
+            [
+                "26e91df9.e58702"
+            ]
+        ]
+    },
+    {
+        "id": "26e91df9.e58702",
+        "type": "function",
+        "z": "68088a3e.3d3044",
+        "name": "dispatchDay",
+        "func": "\nmsg.payload = msg.payload.day + \"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 382,
+        "y": 585,
+        "wires": [
+            [
+                "63445a2.a89f6a4"
+            ]
+        ]
+    },
+    {
+        "id": "3c000bbc.612834",
+        "type": "mqtt in",
+        "z": "68088a3e.3d3044",
+        "name": "MQQT-ForgotToTakePills",
+        "topic": "IFTT_USER/feeds/smartmed.forgot",
+        "qos": "0",
+        "broker": "e8ec4ae.661a8b8",
+        "x": 1196,
+        "y": 203,
+        "wires": [
+            [
+                "223c19d5.c65476"
+            ]
+        ]
+    },
+    {
+        "id": "223c19d5.c65476",
+        "type": "http request",
+        "z": "68088a3e.3d3044",
+        "name": "SendHotSMS",
+        "method": "GET",
+        "ret": "txt",
+        "url": "https://maker.ifttt.com/trigger/FORGOT_PILLST/with/key/IFFT_KEY",
+        "tls": "",
+        "x": 1293,
+        "y": 239,
+        "wires": [
+            []
+        ]
+    }
+]
